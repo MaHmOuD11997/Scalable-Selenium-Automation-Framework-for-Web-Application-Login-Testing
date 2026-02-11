@@ -95,9 +95,9 @@ Login-Functionality-Automation-Selenium
 
 ### 1️⃣ Clone Repository
 
-```bash
+
 git clone https://github.com/MaHmOuD11997/Login-Functionality-Automation-Selenium.git
-2️⃣ Open Project
+### 2️⃣ Open Project
 
 Open the project using:
 
@@ -107,12 +107,12 @@ Eclipse
 
 Import it as a Maven Project.
 
-3️⃣ Install Dependencies
+### 3️⃣ Install Dependencies
 
 Maven will automatically download required dependencies.
 
 Or run manually: mvn clean install
-▶️ How to Run Tests
+## ▶️ How to Run Tests
 Run using Maven:mvn test
 
 Run using TestNG:
@@ -121,11 +121,11 @@ Open testng.xml
 
 Right-click → Run
 
-📊 Reports 
+## 📊 Reports 
 
 If Allure is configured: allure serve allure-results
 
-💡 Key Features
+## 💡 Key Features
 
 ✔ Clean & scalable automation framework
 ✔ Real-world login validation scenarios
@@ -134,15 +134,15 @@ If Allure is configured: allure serve allure-results
 ✔ Professional project structure
 ✔ Easily extendable for regression testing
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Mahmoud Hadiha
 Software Quality Assurance Engineer
 Automation Testing Specialist
 
-🔗 GitHub: https://github.com/MaHmOuD11997
+## 🔗 GitHub: https://github.com/MaHmOuD11997
 
-🎯 Future Improvements
+## 🎯 Future Improvements
 
 Implement Data-Driven Testing (TestNG DataProvider)
 
