@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
 public class LoginPage {
 
     WebDriver driver;
@@ -24,8 +24,9 @@ public class LoginPage {
 
 
     // Logout Locators
-    By userDropdown = By.className("oxd-userdropdown-name");
-    By logoutLink = By.xpath("//a[text()='Logout']");
+    By userDropdown = By.xpath("//span[contains(@class,'oxd-userdropdown-tab')]");
+    By logoutLink = By.xpath("//a[contains(@href,'logout')]");
+
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -82,10 +83,21 @@ public class LoginPage {
     // دالة تسجيل الخروج الجديدة
     @Step("Perform Logout")
     public void logout() {
-        wait.until(ExpectedConditions.elementToBeClickable(userDropdown)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(logoutLink)).click();
-    }
 
+        // نتأكد أننا في Dashboard أولاً
+        wait.until(ExpectedConditions.urlContains("dashboard"));
+
+        // نضغط على قائمة المستخدم
+        wait.until(ExpectedConditions
+                        .elementToBeClickable(userDropdown))
+                .click();
+
+        // نضغط Logout
+        wait.until(ExpectedConditions
+                        .elementToBeClickable(logoutLink))
+                .click();
+    }
+    @Step("Check if Login Page is Displayed")
     public boolean isLoginPageDisplayed() {
         return wait.until(ExpectedConditions.urlContains("login"));
     }

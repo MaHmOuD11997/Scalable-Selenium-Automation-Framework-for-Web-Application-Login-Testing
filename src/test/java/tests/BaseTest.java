@@ -28,12 +28,12 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
-
+        options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--window-size=1920,1080");
 
-         driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
 
