@@ -18,7 +18,10 @@ public class LoginPage {
     By loginButton = By.xpath("//button[@type='submit']");
 
     // لوكيتور عام يجمع رسائل الخطأ (مطلوب أو بيانات خاطئة)
-    By errorMessage = By.xpath("//p[contains(@class,'oxd-alert-content-text') or contains(@class, 'oxd-input-field-error-message')]");
+    By invalidCredentialsMessage = By.cssSelector("div.oxd-alert-content");
+    By requiredMessage = By.cssSelector("span.oxd-input-field-error-message");
+
+
 
     // Logout Locators
     By userDropdown = By.className("oxd-userdropdown-name");
@@ -55,8 +58,21 @@ public class LoginPage {
 
     @Step("Get Error Message")
     public String getErrorMessage() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage)).getText();
+
+        try {
+            // أولاً نحاول الحصول على Invalid credentials
+            return wait.until(ExpectedConditions
+                            .visibilityOfElementLocated(invalidCredentialsMessage))
+                    .getText();
+        } catch (Exception e) {
+            // إذا لم يوجد، نتحقق من Required
+            return wait.until(ExpectedConditions
+                            .visibilityOfElementLocated(requiredMessage))
+                    .getText();
+        }
     }
+
+
 
     @Step("Check if Dashboard is Displayed")
     public boolean isDashboardDisplayed() {
